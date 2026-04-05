@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Projects | Sidharth Unni</title>
+
+<link rel="stylesheet" href="style3.css">
+
+</head>
+
+<script>
+function toggleSidebar() {
+    document.querySelector('.sidebar').classList.toggle('hide');
+}
+</script>
+
+<body>
+
+<!-- Navigation Button -->
+<button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+<!-- ✅ Sidebar (OUTSIDE main content) -->
+<div class="sidebar">
+    <h2 class="logo">Sidharth Unni</h2>
+
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+
+<!-- ✅ MAIN CONTENT WRAPPER -->
+<div class="main-content">
+
+<!-- Projects Section -->
+<section class="projects">
+
+<h1 class="wave-glow">My Projects</h1>
+
+<div class="project-container">
+
+<!-- Project 1 -->
+<div class="project-card">
+
+<img src="sidhu2.png" class="project-icon" onclick="openProject(this)">
+
+<h2 class="wave-glow">Smart Notes App</h2>
+
+<p class="dim-glow">
+An Android application that allows users to create, store and 
+share notes securely.
+</p>
+
+<ul class="dim-glow">
+<li>Share notes using Intent</li>
+<li>Encrypted SharedPreferences</li>
+<li>Content Provider integration</li>
+<li>File Provider support</li>
+<li>Deep linking support</li>
+<li>Networking using Retrofit</li>
+</ul>
+
+
+
+</div>
+
+
+<!-- Project 2 -->
+<div class="project-card">
+
+<img src="sidhu3.png" class="project-icon" onclick="openProject(this)">
+
+<h2 class="wave-glow">Android Feature Demonstration</h2>
+
+<p class="dim-glow">
+A demonstration app implementing key Android components 
+and architecture features.
+</p>
+
+<ul class="dim-glow">
+<li>Broadcast Receiver</li>
+<li>Network Security Config</li>
+<li>Application Signing</li>
+<li>Secure Data Handling</li>
+</ul>
+
+<button class="btn" onclick='openLink("https://github.com")'>
+    View Project
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</div> <!-- ✅ END main-content -->
+
+
+<!-- Popup -->
+<div id="projectPopup" class="project-popup">
+    <span class="close-btn" onclick="closeProject()">&times;</span>
+    <img id="popupProjectImg">
+</div>
+
+</body>
+<button class="menu-btn" onclick="toggleSidebar(this)">☰</button>
+
+<script>
+function toggleSidebar(btn) {
+    document.querySelector('.sidebar').classList.toggle('hide');
+    btn.textContent = btn.textContent === "☰" ? "✖" : "☰";
+}
+function openProject(img){
+    let popup = document.getElementById("projectPopup");
+    let popupImg = document.getElementById("popupProjectImg");
+
+    popup.style.display = "flex";
+    popupImg.src = img.src;
+}
+
+function closeProject(){
+    document.getElementById("projectPopup").style.display = "none";
+}
+
+function openLink(url){
+    window.open(url, "_blank");
+}
+
+</script>
+</html>

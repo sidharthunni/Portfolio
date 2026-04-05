@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Sidharth Unni | Android Developer</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+<h2 class="logo" id="logo">Sidharth Unni</h2>
+
+       <ul class="nav-links">
+    <li><a href="index.html" class="home">Home</a></li>
+    <li><a href="about.html" class="about">About</a></li>
+    <li><a href="projects.html" class="projects">Projects</a></li>
+    <li><a href="contact.html" class="contact">Contact</a></li>
+</ul>
+    </nav>
+
+    <!-- Hero Section -->
+<section id="home" class="hero">
+
+<div class="hero-container">
+
+<div class="hero-text glow-text">
+
+<h1>Hi, I'm <span class="name-dance">Sidharth Unni</span></h1>
+<h2>Android Developer</h2>
+
+<p>
+I build Android applications using XML, Java and Python.
+Passionate about creating secure and creative mobile apps.
+</p>
+
+<a href="projects.html" class="btn">View My Projects</a>
+
+
+
+
+</div>
+
+<div class="hero-image">
+<img src="sid.png" id="profileImg" onclick="openImage('sid3.png')">
+</div>
+
+</div>
+
+</section>
+
+    <!-- Popup -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h2>Sidharth Unni</h2>
+            <p>Android Developer skilled in Java, XML and Python.</p>
+            <p>I build mobile applications with modern UI and backend integration.</p>
+            <button onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <!-- Quote Box -->
+    <div id="quoteBox" class="quote-box">
+        <p id="quoteText"></p>
+        <button onclick="closeQuote()">Close</button>
+    </div>
+
+    <!-- Image Popup -->
+    <div id="imagePopup" class="image-popup">
+        <span class="close-img" onclick="closeImage()">&times;</span>
+        <img id="popupImg">
+    </div>
+
+    
+
+    <!-- JavaScript -->
+<script>
+
+// ================= QUOTES =================
+const quotes = [
+"Push yourself, because no one else is going to do it for you.",
+"Success doesn't come from what you do occasionally, it comes from what you do consistently.",
+"Great developers are made by solving problems every day.",
+"Dream big. Start small. Act now.",
+"Code today, create tomorrow."
+];
+
+function showQuote() {
+    let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    document.getElementById("quoteText").innerText = randomQuote;
+    document.getElementById("quoteBox").style.display = "block";
+}
+
+function closeQuote() {
+    document.getElementById("quoteBox").style.display = "none";
+}
+
+
+// ================= RUN AFTER LOAD =================
+window.onload = function () {
+
+    const logo = document.querySelector(".logo");
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    logo.addEventListener("mouseenter", showQuote);
+    logo.addEventListener("mouseleave", closeQuote);
+
+    navLinks.forEach(link => {
+        link.addEventListener("mouseenter", showQuote);
+        link.addEventListener("mouseleave", closeQuote);
+    });
+
+};
+
+
+// ✅ IMAGE POPUP (OUTSIDE)
+function openImage(imageSrc) {
+
+    const popup = document.getElementById("imagePopup");
+    const popupImg = document.getElementById("popupImg");
+
+    popup.style.display = "flex";
+    popupImg.src = imageSrc;
+
+}
+
+function closeImage() {
+    document.getElementById("imagePopup").style.display = "none";
+}
+
+
+// ================= PROFILE POPUP =================
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
+// NAVBAR DANCE EFFECT
+
+const navItems = document.querySelectorAll(".nav-links a");
+
+navItems.forEach(item => {
+
+    item.addEventListener("mouseenter", () => {
+        item.classList.add("animate");
+    });
+
+    item.addEventListener("mouseleave", () => {
+        item.classList.remove("animate");
+    });
+
+});
+
+
+const projectLink = document.querySelector(".projects");
+
+projectLink.addEventListener("mouseenter", () => {
+    projectLink.classList.add("animate");
+
+    // remove after animation so it can repeat
+    setTimeout(() => {
+        projectLink.classList.remove("animate");
+    }, 400);
+});
+
+</script>
+
+</body>
+</html>
